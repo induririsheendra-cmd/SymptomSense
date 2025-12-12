@@ -1,6 +1,9 @@
+import React, { useState } from 'react';
+import { SYMPTOMS_DB } from '../utils/symptomLogic';
+
 const SymptomInput = ({ onSubmit }) => {
-    const [searchTerm, setSearchTerm] = React.useState('');
-    const [selected, setSelected] = React.useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [selected, setSelected] = useState([]);
 
     const toggleSymptom = (symptomId) => {
         if (selected.includes(symptomId)) {
@@ -10,7 +13,7 @@ const SymptomInput = ({ onSubmit }) => {
         }
     };
 
-    const filteredSymptoms = window.SYMPTOMS_DB.filter(s =>
+    const filteredSymptoms = SYMPTOMS_DB.filter(s =>
         s.label.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
@@ -69,7 +72,7 @@ const SymptomInput = ({ onSubmit }) => {
                     ) : (
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
                             {selected.map(id => {
-                                const s = window.SYMPTOMS_DB.find(db => db.id === id);
+                                const s = SYMPTOMS_DB.find(db => db.id === id);
                                 return (
                                     <span key={id} style={{
                                         background: 'rgba(255,255,255,0.1)',
@@ -101,4 +104,4 @@ const SymptomInput = ({ onSubmit }) => {
     );
 };
 
-window.SymptomInput = SymptomInput;
+export default SymptomInput;

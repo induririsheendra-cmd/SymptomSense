@@ -1,10 +1,13 @@
-const AssessmentResult = ({ symptoms, onSave, onRetake }) => {
-    const [results, setResults] = React.useState([]);
-    const [saved, setSaved] = React.useState(false);
+import React, { useState, useEffect } from 'react';
+import { assessSymptoms } from '../utils/symptomLogic';
 
-    React.useEffect(() => {
-        // Use window.assessSymptoms
-        const analysis = window.assessSymptoms(symptoms);
+const AssessmentResult = ({ symptoms, onSave, onRetake }) => {
+    const [results, setResults] = useState([]);
+    const [saved, setSaved] = useState(false);
+
+    useEffect(() => {
+        // Use assessSymptoms
+        const analysis = assessSymptoms(symptoms);
         setResults(analysis);
     }, [symptoms]);
 
@@ -114,4 +117,4 @@ const getUrgencyColor = (level) => {
     }
 };
 
-window.AssessmentResult = AssessmentResult;
+export default AssessmentResult;

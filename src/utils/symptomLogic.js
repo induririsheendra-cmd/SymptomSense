@@ -1,4 +1,4 @@
-window.SYMPTOMS_DB = [
+export const SYMPTOMS_DB = [
     { id: 'fever', label: 'Fever', severity: 'moderate' },
     { id: 'cough', label: 'Cough', severity: 'mild' },
     { id: 'headache', label: 'Headache', severity: 'mild' },
@@ -32,7 +32,7 @@ window.SYMPTOMS_DB = [
     { id: 'blisters', label: 'Fluid-filled Blisters', severity: 'moderate' },
 ];
 
-window.CONDITIONS_DB = [
+export const CONDITIONS_DB = [
     {
         id: 'common_cold',
         name: 'Common Cold',
@@ -147,8 +147,8 @@ window.CONDITIONS_DB = [
     }
 ];
 
-window.assessSymptoms = function (selectedSymptoms) {
-    const results = window.CONDITIONS_DB.map(condition => {
+export const assessSymptoms = function (selectedSymptoms) {
+    const results = CONDITIONS_DB.map(condition => {
         const matchCount = condition.symptoms.filter(s => selectedSymptoms.includes(s)).length;
         const matchPercentage = matchCount / condition.symptoms.length;
 

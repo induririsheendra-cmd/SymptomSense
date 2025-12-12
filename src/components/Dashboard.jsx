@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Dashboard = ({ history }) => {
     return (
         <div className="fade-in" style={{ maxWidth: '900px', margin: '0 auto' }}>
@@ -73,4 +75,4 @@ const Dashboard = ({ history }) => {
     );
 };
 
-window.Dashboard = Dashboard;
+export default Dashboard;

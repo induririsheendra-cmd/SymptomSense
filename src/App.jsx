@@ -1,9 +1,14 @@
-const App = () => {
-    const [view, setView] = React.useState('home');
-    const [currentSymptoms, setCurrentSymptoms] = React.useState([]);
-    const [assessmentHistory, setAssessmentHistory] = React.useState([]);
+import React, { useState, useEffect } from 'react';
+import SymptomInput from './components/SymptomInput';
+import AssessmentResult from './components/AssessmentResult';
+import Dashboard from './components/Dashboard';
 
-    React.useEffect(() => {
+const App = () => {
+    const [view, setView] = useState('home');
+    const [currentSymptoms, setCurrentSymptoms] = useState([]);
+    const [assessmentHistory, setAssessmentHistory] = useState([]);
+
+    useEffect(() => {
         // Load history from local storage
         const saved = localStorage.getItem('symptomSense_history');
         if (saved) {
@@ -30,11 +35,6 @@ const App = () => {
         setAssessmentHistory(newHistory);
         localStorage.setItem('symptomSense_history', JSON.stringify(newHistory));
     };
-
-    // Access global components
-    const SymptomInput = window.SymptomInput;
-    const AssessmentResult = window.AssessmentResult;
-    const Dashboard = window.Dashboard;
 
     return (
         <div className="app-wrapper">
@@ -100,4 +100,4 @@ const FeatureCard = ({ title, desc, icon }) => (
     </div>
 );
 
-window.App = App;
+export default App;
